@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:todo_list/screens/home/components/body.dart';
+import 'package:todo_list/screens/new_task/new_task_screen.dart';
 
 class MyHomePage extends StatelessWidget {
-  MyHomePage({Key key, this.title}) : super(key: key);
+  MyHomePage({Key? key, required this.title}) : super(key: key);
 
   final String title;
 
@@ -28,7 +29,10 @@ class MyHomePage extends StatelessWidget {
       ),
       body: Body(),
       floatingActionButton: FloatingActionButton(
-        onPressed: () {},
+        onPressed: () {
+          Navigator.push(
+              context, MaterialPageRoute(builder: (context) => NewTask()));
+        },
         tooltip: 'Increment',
         child: Icon(Icons.add),
         backgroundColor: Colors.blue[600],

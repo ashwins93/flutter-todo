@@ -4,7 +4,7 @@ import 'category_card.dart';
 
 class CategoriesList extends StatelessWidget {
   const CategoriesList({
-    Key key,
+    Key? key,
   }) : super(key: key);
 
   @override
@@ -12,7 +12,8 @@ class CategoriesList extends StatelessWidget {
     return SingleChildScrollView(
       scrollDirection: Axis.horizontal,
       child: Padding(
-        padding: const EdgeInsets.only(bottom: 20.0, left: 15.0, right: 15.0),
+        padding: const EdgeInsets.only(
+            bottom: 20.0, left: 15.0, right: 15.0, top: 10.0),
         child: Row(
           children: [
             CategoryCard(

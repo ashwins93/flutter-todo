@@ -2,16 +2,16 @@ import 'package:flutter/material.dart';
 
 class CategoryCard extends StatelessWidget {
   const CategoryCard({
-    Key key,
-    this.categoryName,
-    this.totalTasks,
-    this.completedTasks,
-    this.categoryColor,
+    Key? key,
+    required this.categoryName,
+    required this.totalTasks,
+    required this.completedTasks,
+    required this.categoryColor,
   }) : super(key: key);
 
   final String categoryName;
   final int totalTasks, completedTasks;
-  final Color categoryColor;
+  final Color? categoryColor;
 
   @override
   Widget build(BuildContext context) {
@@ -27,8 +27,8 @@ class CategoryCard extends StatelessWidget {
         boxShadow: [
           BoxShadow(
               blurRadius: 15,
-              offset: Offset(0, 10),
-              color: Colors.black.withOpacity(0.1)),
+              offset: Offset(0, 5),
+              color: Colors.black.withOpacity(0.05)),
         ],
       ),
       child: Column(
@@ -53,7 +53,7 @@ class CategoryCard extends StatelessWidget {
           LinearProgressIndicator(
             value: completedTasks / totalTasks,
             backgroundColor: Colors.grey[200],
-            valueColor: AlwaysStoppedAnimation<Color>(categoryColor),
+            valueColor: AlwaysStoppedAnimation<Color>(categoryColor!),
             minHeight: 3.0,
           ),
         ],
