@@ -13,7 +13,7 @@ class NewTask extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         elevation: 0,
-        backgroundColor: Colors.grey[50],
+        backgroundColor: Colors.transparent,
         leading: CloseIconButton(),
       ),
       body: Body(categoryList: categoryList),

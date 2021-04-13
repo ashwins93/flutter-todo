@@ -44,7 +44,13 @@ class _CategoryChooserState extends State<CategoryChooser> {
     return Container(
       padding: EdgeInsets.symmetric(horizontal: 20.0),
       decoration: BoxDecoration(
-          border: Border.all(width: 1, color: Colors.grey[300]!),
+          color: Colors.white,
+          boxShadow: [
+            BoxShadow(
+                offset: Offset(0, 3),
+                blurRadius: 8,
+                color: Colors.black.withOpacity(0.05))
+          ],
           borderRadius: BorderRadius.circular(50)),
       child: DropdownButton<TaskCategory>(
         value: _currentValue,

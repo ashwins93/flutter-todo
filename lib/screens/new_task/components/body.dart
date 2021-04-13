@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:todo_list/models/task_category.dart';
+import 'package:todo_list/screens/new_category/new_category_screen.dart';
 
 import 'category_chooser.dart';
 
@@ -31,9 +32,24 @@ class Body extends StatelessWidget {
             ),
           ),
           Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 30.0),
-            child: CategoryChooser(
-                categoryList: categoryList, initValue: categoryList[0]),
+            padding: EdgeInsets.symmetric(horizontal: 30.0),
+            child: Row(
+              children: [
+                CategoryChooser(
+                    categoryList: categoryList, initValue: categoryList[0]),
+                Padding(
+                  padding: EdgeInsets.symmetric(horizontal: 8.0),
+                  child: IconButton(
+                      icon: Icon(Icons.create),
+                      onPressed: () {
+                        Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) => NewCategoryScreen()));
+                      }),
+                ),
+              ],
+            ),
           ),
           Spacer(),
           Container(
@@ -44,7 +60,9 @@ class Body extends StatelessWidget {
                 ElevatedButton(
                   style: ButtonStyle(
                       alignment: Alignment.centerRight,
-                      elevation: MaterialStateProperty.all(8.0),
+                      elevation: MaterialStateProperty.all(10.0),
+                      shadowColor: MaterialStateProperty.all(
+                          Colors.black.withOpacity(0.4)),
                       backgroundColor:
                           MaterialStateProperty.all(Colors.blue[600]),
                       padding: MaterialStateProperty.all(
@@ -52,7 +70,9 @@ class Body extends StatelessWidget {
                       shape: MaterialStateProperty.all(RoundedRectangleBorder(
                           borderRadius:
                               BorderRadius.all(Radius.circular(20))))),
-                  onPressed: () {},
+                  onPressed: () {
+                    Navigator.pop(context);
+                  },
                   child: Row(children: [
                     Text(
                       'New task ',

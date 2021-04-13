@@ -10,6 +10,7 @@ class CategoriesList extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SingleChildScrollView(
+      clipBehavior: Clip.none,
       scrollDirection: Axis.horizontal,
       child: Padding(
         padding: const EdgeInsets.only(

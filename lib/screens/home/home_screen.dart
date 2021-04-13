@@ -3,9 +3,7 @@ import 'package:todo_list/screens/home/components/body.dart';
 import 'package:todo_list/screens/new_task/new_task_screen.dart';
 
 class MyHomePage extends StatelessWidget {
-  MyHomePage({Key? key, required this.title}) : super(key: key);
-
-  final String title;
+  MyHomePage({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
