@@ -39,7 +39,7 @@ class CategoryCard extends StatelessWidget {
             child: RichText(
                 text: TextSpan(children: [
               TextSpan(
-                text: '$totalTasks tasks\n',
+                text: '$totalTasks ${totalTasks > 1 ? "tasks" : "task"}\n',
                 style: TextStyle(color: Colors.grey, fontSize: 14),
               ),
               TextSpan(
@@ -51,7 +51,7 @@ class CategoryCard extends StatelessWidget {
             ])),
           ),
           LinearProgressIndicator(
-            value: completedTasks / totalTasks,
+            value: totalTasks > 0 ? completedTasks / totalTasks : 0,
             backgroundColor: Colors.grey[200],
             valueColor: AlwaysStoppedAnimation<Color>(categoryColor!),
             minHeight: 3.0,
