@@ -1,22 +1,17 @@
 import 'package:flutter/material.dart';
-import 'package:todo_list/models/task_category.dart';
 
 import 'components/body.dart';
 
 class NewTask extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    var categoryList = <TaskCategory>[
-      TaskCategory('Business', Colors.purpleAccent[200]!),
-      TaskCategory('Personal', Colors.blue[600]!)
-    ];
     return Scaffold(
       appBar: AppBar(
         elevation: 0,
         backgroundColor: Colors.transparent,
         leading: CloseIconButton(),
       ),
-      body: Body(categoryList: categoryList),
+      body: Body(),
     );
   }
 }

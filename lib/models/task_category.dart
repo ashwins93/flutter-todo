@@ -6,6 +6,8 @@ class TaskCategory {
 
   const TaskCategory(this.categoryName, this.categoryColor);
 
+  static empty() => const TaskCategory('', Colors.grey);
+
   @override
   bool operator ==(Object other) =>
       identical(this, other) ||

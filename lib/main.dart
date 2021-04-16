@@ -11,7 +11,7 @@ import 'package:google_fonts/google_fonts.dart';
 void main() {
   final Store<AppState> store = Store<AppState>(appStateReducer,
       initialState: AppState(categories: {
-        'Business': TaskCategory('Business', Colors.purpleAccent[200]!),
+        'Business': TaskCategory('Business', Colors.pink[200]!),
         'Personal': TaskCategory('Personal', Colors.blue[600]!)
       }, tasks: {
         'task1': Task(

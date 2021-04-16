@@ -1,16 +1,17 @@
 import 'package:flutter/material.dart';
+import 'package:todo_list/models/task.dart';
 
 class TaskTile extends StatelessWidget {
   const TaskTile({
     Key? key,
-    required this.title,
+    required this.task,
     required this.taskColor,
-    this.completed = false,
+    required this.onTapAction,
   }) : super(key: key);
 
-  final String title;
+  final Task task;
   final Color taskColor;
-  final bool completed;
+  final void Function() onTapAction;
 
   @override
   Widget build(BuildContext context) {
@@ -22,19 +23,19 @@ class TaskTile extends StatelessWidget {
       margin: EdgeInsets.symmetric(horizontal: 20, vertical: 5),
       child: ListTile(
         contentPadding: EdgeInsets.symmetric(vertical: 10, horizontal: 20),
-        onTap: () {},
+        onTap: onTapAction,
         leading: Container(
           width: 25,
           height: 25,
           decoration: BoxDecoration(
               border: Border.all(
                 width: 2.0,
-                color: completed ? Colors.grey : taskColor,
+                color: task.completed ? Colors.grey : taskColor,
               ),
               shape: BoxShape.circle,
-              color: completed ? Colors.grey : Colors.transparent),
+              color: task.completed ? Colors.grey : Colors.transparent),
           child: Center(
-              child: completed
+              child: task.completed
                   ? Icon(
                       Icons.check,
                       color: Colors.white,
@@ -43,10 +44,10 @@ class TaskTile extends StatelessWidget {
                   : null),
         ),
         title: Text(
-          title,
+          task.title,
           style: TextStyle(
-              color: completed ? Colors.grey : Colors.grey[900],
-              decoration: completed ? TextDecoration.lineThrough : null),
+              color: task.completed ? Colors.grey : Colors.grey[900],
+              decoration: task.completed ? TextDecoration.lineThrough : null),
         ),
       ),
     );
