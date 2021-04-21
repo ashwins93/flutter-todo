@@ -9,10 +9,6 @@ import 'package:todo_list/selectors/selectors.dart';
 import 'task_tile.dart';
 
 class TaskList extends StatelessWidget {
-  const TaskList({
-    Key? key,
-  }) : super(key: key);
-
   @override
   Widget build(BuildContext context) {
     return StoreConnector<AppState, _ViewModel>(
@@ -20,8 +16,13 @@ class TaskList extends StatelessWidget {
       builder: (context, vm) => Column(
           children: vm.tasks.entries
               .map((entry) => TaskTile(
+                    key: Key(entry.key.id),
                     taskColor: entry.value,
                     task: entry.key,
+                    onDeleteAction: () {
+                      print("Deleting ${entry.key.id}");
+                      vm.onDelete(entry.key.id);
+                    },
                     onTapAction: () {
                       vm.onComplete(
                           entry.key.id,
@@ -40,12 +41,19 @@ class TaskList extends StatelessWidget {
 class _ViewModel {
   final Map<Task, Color> tasks;
   final void Function(String, Task) onComplete;
+  final void Function(String) onDelete;
 
-  _ViewModel(this.tasks, this.onComplete);
+  _ViewModel(
+      {required this.onDelete, required this.tasks, required this.onComplete});
 
   static _ViewModel fromStore(Store<AppState> store) {
-    return _ViewModel(tasksSelector(store.state), (id, updatedTask) {
-      store.dispatch(UpdateTaskAction(id, updatedTask: updatedTask));
-    });
+    return _ViewModel(
+        tasks: tasksSelector(store.state),
+        onComplete: (id, updatedTask) {
+          store.dispatch(UpdateTaskAction(id, updatedTask: updatedTask));
+        },
+        onDelete: (id) {
+          store.dispatch(RemoveTaskAction(id));
+        });
   }
 }
